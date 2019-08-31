@@ -31,9 +31,12 @@ warnings.filterwarnings('ignore')
 
 
 class DeepInsight(object):
-    
-    def __init__(self):
+    """
 
+    """
+    def __init__(self):
+        self.result_points = None
+        self.result_rectan = None
 
     """
     Obtain DeepInsight's Images for Train
@@ -66,16 +69,16 @@ class DeepInsight(object):
         #Calculate Convex-Hull
         #output is corner points of 'Minimum Bounding Rectangle Box'
 
-        corner_points = MBRB(points)
+        corner_points = self.__MBRB(points)
 
 
         #Transform points
-        self.result_points, self.result_rectan = Transform_coor(points, corner_points)
+        self.result_points, self.result_rectan = self.__Transform_coor(points, corner_points)
 
 
         #Create Image
 
-        images = create_image(df)
+        images = self.__create_image(df)
 
         return images
 
@@ -84,7 +87,7 @@ class DeepInsight(object):
     """
     def predict(self, df):
 
-        images = create_image(df)
+        images = self.__create_image(df)
 
         return images
 
@@ -94,7 +97,7 @@ class DeepInsight(object):
     Calculate corner points of Minimum Bounding Rectangle Box with Rotation
     """
 
-    def MBRB(self, points):
+    def __MBRB(self, points):
         hull = ConvexHull(points)
 
         points = hull.points
@@ -167,7 +170,7 @@ class DeepInsight(object):
     Transform Coordinate for Cartecian
     """
 
-    def Transform_coor(self, points, corner_points):
+    def __Transform_coor(self, points, corner_points):
         rectan = np.vstack((corner_points, corner_points[0]))
         Gr = (corner_points[1, 1] - corner_points[2, 1]) / (corner_points[1, 0] - corner_points[2, 0])
 
@@ -185,7 +188,7 @@ class DeepInsight(object):
     Create_Images
     """
 
-    def create_image(self, df):
+    def __create_image(self, df):
         result_points = self.result_points
         result_rectan = self.result_recta
 

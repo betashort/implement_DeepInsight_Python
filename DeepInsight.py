@@ -190,7 +190,7 @@ class DeepInsight(object):
 
     def __create_image(self, df):
         result_points = self.result_points
-        result_rectan = self.result_recta
+        result_rectan = self.result_rectan
 
         images = []
 

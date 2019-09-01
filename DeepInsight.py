@@ -41,7 +41,43 @@ class DeepInsight(object):
     """
     Obtain DeepInsight's Images for Train
     """
+
     def fit(self, df, method='kpca'):
+        '''
+
+        :param df:data
+        :param method:decomp method defalt is 'Kernel PCA'
+        :param points is decomp result
+        :return:
+        '''
+
+        '''
+        decomp_method
+        '''
+        sd = StandardScaler()
+        sd.fit(df.T)
+        train_sd = sd.transform(df.T)
+
+        if method == 'kpca':
+            kpca = KernelPCA(n_components=2, kernel='rbf')
+            points = kpca.fit_transform(train_sd)
+
+        elif method == 'tsne':
+            tsne = TSNE(n_components=2, metric='cosine')
+            points = tsne.fit_transform(train_sd)
+
+
+        #Calculate Convex-Hull
+        #output is corner points of 'Minimum Bounding Rectangle Box'
+
+        corner_points = self.__MBRB(points)
+
+
+        #Transform points
+        self.result_points, self.result_rectan = self.__Transform_coor(points, corner_points)
+
+
+    def fit_transform(self, df, method='kpca'):
         '''
 
         :param df:data
@@ -83,14 +119,21 @@ class DeepInsight(object):
         return images
 
     """
-    Obtain DeepInsight's Images for Validation or Test
+    Obtain DeepInsight's Images 
     """
-    def predict(self, df):
+    def transform(self, df):
 
         images = self.__create_image(df)
 
         return images
 
+
+
+    """
+    -----------------
+    can't access
+    -----------------
+    """
 
     """
     Use Convex Hull
@@ -210,12 +253,16 @@ class DeepInsight(object):
 
                 deepinsight[px, py] += df.iloc[n, i]
 
+            #averaging
+            deepinsight = deepinsight / count_table
+
+            #Fill 0 with 1
             deepinsight = np.where(deepinsight == 0, 1, deepinsight)
 
             '''
             Norm
             '''
-            deepinsight = deepinsight / count_table
+
             max_v = deepinsight.max()
             min_v = deepinsight.min()
             deepinsight = (deepinsight - min_v) / (max_v - min_v)

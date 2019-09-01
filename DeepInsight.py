@@ -229,8 +229,3 @@ class DeepInsight(object):
             images.append(deepinsight.T)
 
         return images
-
-
-
-
-

@@ -228,4 +228,6 @@ class DeepInsight(object):
 
             images.append(deepinsight.T)
 
+        images = np.array(images)
+
         return images

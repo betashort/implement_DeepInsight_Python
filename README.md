@@ -1,14 +1,25 @@
-# gene-expression
+# Implement DeepInsight with Python
+
+URL:https://www.nature.com/articles/s41598-019-47765-6
+
+====================
+*Attention*
+Whiel Editing ...
+So, My code is maybe miss...
+Sorry...
+
+====================
+
+## Test Data gene-expression
 Analyze gene-expression
 
-Main thema is using DeepInsight for gene-expression.
+I test DeepInsight with using gene-expression Dataset.
 
-## Dataset
+### Dataset
 Use Kaggle Dataset "gene-expression"
 URL:https://www.kaggle.com/crawford/gene-expression
 
-## DeepInsight
-URL:https://www.nature.com/articles/s41598-019-47765-6
+
 
 # Create Images from table Dataset
 

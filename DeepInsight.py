@@ -231,29 +231,30 @@ class DeepInsight(object):
     Create_Images
     """
 
-    def __create_image(self, df):
+    def __create_image(self, df, width=120, height=120):
         result_points = self.result_points
         result_rectan = self.result_rectan
 
         images = []
 
         rr_p = abs(((result_points - result_rectan[3]) * 100).astype(int))
-        #rr_cp = abs(((result_rectan - result_rectan[3]) * 100).astype(int))
 
         for n in range(df.shape[0]):
             deepinsight = np.zeros((rr_p[:, 0].max() + 1, rr_p[:, 1].max() + 1))
-            count_table = np.ones((rr_p[:, 0].max() + 1, rr_p[:, 1].max() + 1))
+            count_table = np.zeros((rr_p[:, 0].max() + 1, rr_p[:, 1].max() + 1))
 
             for i, position in enumerate(rr_p):
                 px = position[0]
                 py = position[1]
 
-                if deepinsight[px, py] != 0:
-                    count_table[px, py] += 1
+                count_table[px, py] += 1
 
-                deepinsight[px, py] += df.iloc[n, i]
+                deepinsight[px, py] += df[n, i]
 
             #averaging
+            
+            count_table = np.where(count_table == 0, 1, count_table)
+            
             deepinsight = deepinsight / count_table
 
             #Fill 0 with 1
@@ -271,7 +272,7 @@ class DeepInsight(object):
             Resize(120×120)
             '''
             i = Image.fromarray(deepinsight)
-            deepinsight = np.asarray(i.resize((120, 120)))
+            deepinsight = np.asarray(i.resize((width, height)))
 
             images.append(deepinsight.T)
 

@@ -13,24 +13,22 @@ URL:https://www.nature.com/articles/s41598-019-47765-6
 # Create Images from table Dataset
 
 ## Require Python Library
-### Defalt Library
 1. sys
 2. math  
+3. numpy
+4. pandas
+5. matplotlib
+6. scipy
+7. PIL
+8. sklearn
 
-### Add  
-1. numpy
-2. pandas
-3. matplotlib
-4. scipy
-5. PIL
-6. sklearn
-
-## How to Use
+## How to Use(editing...)
 ```python
 import DeepInsight
 
 #table Dataset
 deepinsight = DeepInsight.DeepInsigh()
 train_image = deepinsight.fit(train_df, method='kpca')
-test_image = deepinsight.predict(test_df)
+train_image = deepinsight.fit_transform(train_df, method='kpca')
+test_image = deepinsight.transform(test_df)
 ```

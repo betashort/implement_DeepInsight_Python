@@ -47,10 +47,9 @@ test_image = deepinsight.transform(test_df)
 [sample](./test.ipynb)  
 
 ## kPCA
-
-<img scr="./picture/train_images[1]_kpca.png">
-<img scr="./picture/train_images[30]_kpca.png">
+<img src="./picture/train_images[1]_kpca.png">
+<img src="./picture/train_images[30]_kpca.png">
 
 ## t-SNE
-<img scr="./picture/train_images[1]_tsne.png">
-<img scr="./picture/train_images[30]_tsne.png">
+<img src="./picture/train_images[1]_tsne.png">
+<img src="./picture/train_images[30]_tsne.png">

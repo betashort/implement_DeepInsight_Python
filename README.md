@@ -4,7 +4,6 @@ URL:https://www.nature.com/articles/s41598-019-47765-6
 
 ====================  
 *Attention*  
-Whiel Editing ...  
 So, My code is maybe miss...  
 Sorry...  
   
@@ -32,7 +31,7 @@ URL:https://www.kaggle.com/crawford/gene-expression
 6. scipy
 7. PIL
 8. sklearn
-
+9. imblearn
 ## How to Use(editing...)
 ```python
 import DeepInsight
@@ -43,3 +42,14 @@ train_image = deepinsight.fit(train_df, method='kpca')
 train_image = deepinsight.fit_transform(train_df, method='kpca')
 test_image = deepinsight.transform(test_df)
 ```
+
+# Test
+[sample](./test.ipynb)  
+
+## kPCA
+
+<img sct="./picture/train_images[1]_kpca.png">
+<img sct="./picture/train_images[30]_kpca.png">
+## t-SNE
+<img sct="./picture/train_images[1]_tsne.png">
+<img sct="./picture/train_images[30]_tsne.png">

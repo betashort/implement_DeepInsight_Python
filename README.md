@@ -6,7 +6,7 @@ URL:https://www.nature.com/articles/s41598-019-47765-6
 *Attention*  
 So, My code is maybe miss...  
 Sorry...  
-  
+
 ====================  
 
 ## Test Data gene-expression
@@ -48,8 +48,9 @@ test_image = deepinsight.transform(test_df)
 
 ## kPCA
 
-<img sct="./picture/train_images[1]_kpca.png">
-<img sct="./picture/train_images[30]_kpca.png">
+<img scr="./picture/train_images[1]_kpca.png">
+<img scr="./picture/train_images[30]_kpca.png">
+
 ## t-SNE
-<img sct="./picture/train_images[1]_tsne.png">
-<img sct="./picture/train_images[30]_tsne.png">
+<img scr="./picture/train_images[1]_tsne.png">
+<img scr="./picture/train_images[30]_tsne.png">
